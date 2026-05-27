@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Video</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #000000;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            max-width: 100vw;
+            max-height: 100vh;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <video controls autoplay name="media">
+        <source src="proyecto.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video nativa.
+    </video>
+
+</body>
+</html>
