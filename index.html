@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVTECH - Servicio Técnico Especializado</title>
+    <!-- Librería de íconos Font Awesome para los logos profesionales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-principal: #000000; /* Fondo negro puro */
+            --bg-tarjeta: #0b0f19;    /* Azul oscuro profundo para las tarjetas */
+            --color-azul: #00d2ff;     /* Azul neón principal */
+            --color-azul-hover: #0099cc;
+            --texto-principal: #ffffff;
+            --texto-secundario: #a4b1cd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texto-principal);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .contenedor {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Encabezado */
+        header {
+            text-align: center;
+            padding: 50px 0 30px 0;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--texto-principal);
+            text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+        }
+
+        header h1 span {
+            color: var(--color-azul);
+        }
+
+        header p {
+            color: var(--texto-secundario);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* Títulos de Secciones */
+        .titulo-seccion {
+            text-align: center;
+            font-size: 1.8rem;
+            margin: 40px 0 25px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--texto-principal);
+            border-bottom: 2px solid var(--color-azul);
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        /* Grilla de Packs */
+        .packs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .tarjeta-pack {
+            background-color: var(--bg-tarjeta);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 16px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tarjeta-pack:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 210, 255, 0.25);
+            border-color: var(--color-azul);
+        }
+
+        .icono-pack {
+            font-size: 3.5rem;
+            color: var(--color-azul);
+            margin-bottom: 15px;
+        }
+
+        .tarjeta-pack h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .precio {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--color-azul);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .lista-caracteristicas {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .lista-caracteristicas li {
+            padding: 10px 0;
+            color: var(--texto-secundario);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lista-caracteristicas li i {
+            color: var(--color-azul);
+            font-size: 0.9rem;
+        }
+
+        /* Servicios Puntuales */
+        .servicios-lista {
+            background-color: var(--bg-tarjeta);
+            border-radius: 16px;
+            padding: 15px;
+            border: 1px solid rgba(0, 210, 255, 0.1);
+            margin-bottom: 60px;
+        }
+
+        .servicio-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: background 0.2s ease;
+            border-radius: 8px;
+        }
+
+        .servicio-item:last-child {
+            border-bottom: none;
+        }
+
+        .servicio-item:hover {
+            background-color: rgba(0, 210, 255, 0.05);
+        }
+
+        .servicio-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .servicio-icono {
+            font-size: 1.5rem;
+            color: var(--color-azul);
+            width: 30px;
+            text-align: center;
+        }
+
+        .servicio-nombre {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .servicio-derecha {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .servicio-precio {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--color-azul);
+            background: rgba(0, 210, 255, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+        }
+
+        /* Botones de WhatsApp */
+        .btn-ws {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--color-azul);
+            color: #000000;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-ws:hover {
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            transform: scale(1.02);
+        }
+
+        .btn-chico {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        /* Botón Flotante de WhatsApp General (Abajo a la derecha) */
+        .btn-flotante {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-flotante:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--texto-secundario);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.8rem; }
+            .servicio-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .servicio-derecha {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .btn-flotante {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón flotante de WhatsApp directo -->
+    <a href="https://wa.me/5493777681770?text=Hola%20AVTECH,%20quiero%20hacer%20una%20consulta" class="btn-flotante" target="_blank" title="Escribinos por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div class="contenedor">
+        
+        <!-- Encabezado -->
+        <header>
+            <h1>AV<span>TECH</span></h1>
+            <p>Servicio técnico profesional, optimización avanzada y soluciones digitales</p>
+        </header>
+
+        <!-- Sección de Packs Promocionales -->
+        <div style="text-align: center;">
+            <h2 class="titulo-seccion">Packs Promocionales</h2>
+        </div>
+        
+        <div class="packs-container">
+            
+            <!-- Pack Estudiante -->
+            <div class="tarjeta-pack">
+                <div>
+                    <div class="icono-pack"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Pack Estudiante</h3>
+                    <span class="precio">$25.000</span>
+                    <ul class="lista-caracteristicas">
+                        <li><i class="fas fa-check"></i> Paquete Office completo activado</li>
+                        <li><i class="fas fa-check"></i> Navegadores rápidos configurados</li>
+                        <li><i class="fas fa-check"></i> Limpieza de basura del sistema</li>
+                        <li><i class="fas fa-check"></i> Optimización para tareas y Zoom</li>
+                    </ul>
+                </div>
+                <!-- Enlace dinámico a WhatsApp -->
+                <a class="btn-ws" target="_blank" href="https://wa.me/5493777681770?text=Hola%20me%20interesa%20el%20Pack%20Estudiante">
+                    <i class="fab fa-whatsapp"></i> Consultar Pack
+                </a>
+            </div>
+
+            <!-- Pack Gamer -->
+            <div class="tarjeta-pack">
+                <div>
+                    <div class="icono-pack"><i class="fas fa-gamepad"></i></div>
+                    <h3>Pack Gamer</h3>
+                    <span class="precio">$20.000</span>
+                    <ul class="lista-caracteristicas">
+                        <li><i class="fas fa-check"></i> Instalación y actualización de Drivers</li>
+                        <li><i class="fas fa-check"></i> Optimización de Windows para FPS</li>
+                        <li><i class="fas fa-check"></i> Instalación de 2 juegos a elección</li>
+                        <li><i class="fas fa-check"></i> Reducción de lag y delay</li>
+                    </ul>
+                </div>
+                <a class="btn-ws" target="_blank" href="https://wa.me/5493777681770?text=Hola%20me%20interesa%20el%20Pack%20Gamer">
+                    <i class="fab fa-whatsapp"></i> Consultar Pack
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Sección de Servicios Individuales -->
+        <div style="text-align: center;">
+            <h2 class="titulo-seccion">Servicios Puntuales</h2>
+        </div>
+        
+        <div class="servicios-lista">
+            
+            <!-- Servicio 1 -->
+            <div class="servicio-item">
+                <div class="servicio-info">
+                    <div class="servicio-icono"><i class="fab fa-windows"></i></div>
+                    <span class="servicio-nombre">Instalación de Windows</span>
+                </div>
+                <div class="servicio-derecha">
+                    <span class="servicio-precio">$15.000</span>
+                    <a class="btn-ws btn-chico" target="_blank" href="https://wa.me/5493777681770?text=Hola%20me%20interesa%20la%20Instalacion%20de%20Windows">
+                        <i class="fab fa-whatsapp"></i> Pedir
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Servicio 2 -->
+            <div class="servicio-item">
+                <div class="servicio-info">
+                    <div class="servicio-icono"><i class="fas fa-laptop"></i></div>
+                    <span class="servicio-nombre">Windows Optimizado (Netbooks del Gobierno)</span>
+                </div>
+                <div class="servicio-derecha">
+                    <span class="servicio-precio">$20.000</span>
+                    <a class="btn-ws btn-chico" target="_blank" href="https://wa.me/5493777681770?text=Hola%20me%20interesa%20el%20Windows%20Optimizado%20para%20Netbooks">
+                        <i class="fab fa-whatsapp"></i> Pedir
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Servicio 3 -->
+            <div class="servicio-item">
+                <div class="servicio-info">
+                    <div class="servicio-icono"><i class="fas fa-file-word"></i></div>
+                    <span class="servicio-nombre">Instalación de Office</span>
+                </div>
+                <div class="servicio-derecha">
+                    <span class="servicio-precio">$10.000</span>
+                    <a class="btn-ws btn-chico" target="_blank" href="https://wa.me/5493777681770?text=Hola%20me%20interesa%20la%20Instalacion%20de%20Office">
+                        <i class="fab fa-whatsapp"></i> Pedir
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>&copy; 2026 AVTECH &bull; Soluciones informáticas de alto rendimiento</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
